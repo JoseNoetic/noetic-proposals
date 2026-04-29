@@ -199,7 +199,8 @@ em { font-style: italic; font-weight: 400; }
 .slide.dark .card p { color: rgba(255,255,255,0.7); }
 
 .team-card { text-align: center; }
-.team-card img { width: 100%; border-radius: 12px; aspect-ratio: 1 / 1; object-fit: cover; background: var(--paper-cool); }
+.team-card .photo-wrap { background: #262626; border-radius: 14px; overflow: hidden; aspect-ratio: 1 / 1; }
+.team-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .team-card h5 { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-top: 14px; color: var(--ink); }
 .slide.dark .team-card h5 { color: white; }
 .team-card .role { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-top: 4px; }
@@ -265,6 +266,29 @@ ol.process-list .step-aside { color: var(--ink-mute); margin-left: 8px; font-wei
   .slide { height: auto; min-height: 100vh; page-break-after: always; }
   .progress-bar { display: none; }
 }
+
+/* ── BLOB GRADIENT BACKGROUNDS ─────────────────────────── */
+.blob-bg { position: relative; }
+.blob-bg::before, .blob-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+.blob-bg::before {
+  width: 40vw; height: 40vw;
+  background: radial-gradient(circle, rgba(0,212,180,0.35) 0%, transparent 70%);
+  bottom: -10%; left: -8%;
+}
+.blob-bg::after {
+  width: 32vw; height: 32vw;
+  background: radial-gradient(circle, rgba(108,92,231,0.28) 0%, transparent 70%);
+  top: -8%; right: 4%;
+}
+.blob-bg > * { position: relative; z-index: 1; }
+
 </style>
 </head>
 
@@ -388,27 +412,27 @@ ol.process-list .step-aside { color: var(--ink-mute); margin-left: 8px; font-wei
   <div class="five-col" style="margin-top: 48px;">
     <!-- TEAM_GRID_START -->
     <div class="team-card">
-      <img src="../_assets/team/tamir-alush.webp" alt="Tamir Alush">
+      <div class="photo-wrap"><img src="../_assets/team/tamir-alush.webp" alt="Tamir Alush"></div>
       <h5>Tamir Alush</h5>
       <div class="role">Strategy + Creative</div>
     </div>
     <div class="team-card">
-      <img src="../_assets/team/nicole-luna.webp" alt="Nicole Luna">
+      <div class="photo-wrap"><img src="../_assets/team/nicole-luna.webp" alt="Nicole Luna"></div>
       <h5>Nicole Luna</h5>
       <div class="role">Account Director</div>
     </div>
     <div class="team-card">
-      <img src="../_assets/team/jackie-frysz.webp" alt="Jackie Frysz">
+      <div class="photo-wrap"><img src="../_assets/team/jackie-frysz.webp" alt="Jackie Frysz"></div>
       <h5>Jackie Frysz</h5>
       <div class="role">Head of Operations</div>
     </div>
     <div class="team-card">
-      <img src="../_assets/team/paula-carriel.webp" alt="Paula Carriel">
+      <div class="photo-wrap"><img src="../_assets/team/paula-carriel.webp" alt="Paula Carriel"></div>
       <h5>Paula Carriel</h5>
       <div class="role">Senior Strategist</div>
     </div>
     <div class="team-card">
-      <img src="../_assets/team/gonzalo-mazzoni.webp" alt="Gonzalo Mazzoni">
+      <div class="photo-wrap"><img src="../_assets/team/gonzalo-mazzoni.webp" alt="Gonzalo Mazzoni"></div>
       <h5>Gonzalo Mazzoni</h5>
       <div class="role">Media Buyer</div>
     </div>

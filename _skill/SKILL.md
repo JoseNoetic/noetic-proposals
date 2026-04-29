@@ -291,6 +291,56 @@ In code: read `_templates/slides-reveal.html` or `_templates/slides-snap.html` a
   - Bullet lists longer than 5 items without a numbered structure
   - More than one `display-xl` per page
 
+
+## UI & visual details
+
+### Emojis (iOS / Apple style)
+Use Apple-style emoji throughout cards, process steps, philosophy items, and service tiles. They render natively on Apple devices and look polished on all platforms. Use them as visual anchors — one emoji per card/item, placed above or before the title.
+
+**Recommended emoji set by category:**
+- Paid Social / Ads: ✈️ 🚀 🎯
+- Email Marketing: 📩 💌
+- Creative / UGC: 🎬 🎨 🖼️
+- Analytics / Data: 📊 🧬 🔬
+- Strategy: 🧠 🏆 💡
+- Team / People: 🤝 👥
+- Results / Growth: ⭐ 🌟 📈
+- E-commerce: 🛍️ 🛒
+- AI / Tech: 🤖 ⚡
+
+Place emoji in a `.emoji-icon` span: `<span class="emoji-icon">🎯</span>`
+
+```css
+.emoji-icon { font-size: 2em; display: block; margin-bottom: 12px; line-height: 1; }
+```
+
+### Blob gradient backgrounds
+For light slides (`.slide`, `.slide.cool`, `.slide.warm`), add class `blob-bg` to get the teal + purple radial gradient background — matching noetic.io's visual style.
+
+```html
+<section class="slide blob-bg" data-slide="...">
+```
+
+The blobs are rendered via CSS `::before` / `::after` — zero extra markup, no performance cost. All child content is automatically above the blobs via `z-index: 1`.
+
+**Use blob-bg on:** philosophy slides, services overviews, "we believe in" slides, any light-background content slide.
+**Skip blob-bg on:** `.slide.dark`, `.slide.purple-bg`, team slides (already dark).
+
+### Team slide
+Always use background `#262626` behind team photos — wrap every `<img>` in a `<div class="photo-wrap">`. This ensures a clean, consistent card whether the image loads or not.
+
+```html
+<div class="team-card">
+  <div class="photo-wrap">
+    <img src="../_assets/team/tamir-alush.webp" alt="Tamir Alush">
+  </div>
+  <h5>Tamir Alush</h5>
+  <div class="role">Strategy + Creative Direction</div>
+</div>
+```
+
+Team slides should always use `.slide.dark` (black background) for contrast with the `#262626` photo cards.
+
 ## QA checklist (run before declaring done)
 
 1. Every section has eyebrow + display-md (or larger) heading.
@@ -303,6 +353,9 @@ In code: read `_templates/slides-reveal.html` or `_templates/slides-snap.html` a
 8. `prefers-reduced-motion` respected.
 9. All paths are relative (`../_assets/...`, `assets/...`) so GitHub Pages resolves correctly.
 10. Landing index updated with the new deliverable.
+11. Service/philosophy/process cards have an emoji icon (`<span class="emoji-icon">...</span>`).
+12. Light content slides use `blob-bg` class for gradient background.
+13. Team photo `<img>` tags are wrapped in `<div class="photo-wrap">` for `#262626` bg.
 
 ## First-run setup (when assets are missing)
 
