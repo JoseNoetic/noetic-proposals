@@ -161,7 +161,13 @@ Every deliverable is pushed to the repo automatically using the GitHub Contents 
 
 **Credentials:**
 - Repo: `JoseNoetic/noetic-proposals`
-- Token: `NOETIC_GITHUB_TOKEN`
+- Token: read from environment variable `NOETIC_GITHUB_TOKEN`
+
+Set it once in your shell before running Claude:
+```bash
+export NOETIC_GITHUB_TOKEN="your_token_here"
+```
+Or pass it at generation time — Claude will read it with `os.environ["NOETIC_GITHUB_TOKEN"]`.
 
 **Push function (Python — run after generating each file):**
 
@@ -200,7 +206,7 @@ def github_push(repo, token, path, content_str, commit_msg):
 
 ```python
 REPO  = "JoseNoetic/noetic-proposals"
-TOKEN = "NOETIC_GITHUB_TOKEN"
+TOKEN = os.environ["NOETIC_GITHUB_TOKEN"]  # set: export NOETIC_GITHUB_TOKEN=ghp_...
 
 with open(f"{slug}/index.html") as f:
     html = f.read()
