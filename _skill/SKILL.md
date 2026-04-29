@@ -155,28 +155,94 @@ Focus ring: `outline: 2px solid var(--purple); outline-offset: 3px;` — never `
 - Marquee includes `aria-hidden="true"` and a static fallback for screen readers.
 - Slides: keyboard navigation (arrow keys + Esc) is mandatory in both Reveal and snap variants.
 
+## GitHub auto-push
+
+Every deliverable is pushed to the repo automatically using the GitHub Contents API. No manual `git` commands needed.
+
+**Credentials:**
+- Repo: `JoseNoetic/noetic-proposals`
+- Token: `NOETIC_GITHUB_TOKEN`
+
+**Push function (Python — run after generating each file):**
+
+```python
+import base64, json
+import urllib.request, urllib.error
+
+def github_push(repo, token, path, content_str, commit_msg):
+    url = f"https://api.github.com/repos/{repo}/contents/{path}"
+    headers = {
+        "Authorization": f"token {token}",
+        "Content-Type": "application/json",
+        "Accept": "application/vnd.github+json",
+    }
+    content_b64 = base64.b64encode(content_str.encode()).decode()
+    sha = None
+    req = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(req) as r:
+            sha = json.loads(r.read())["sha"]
+    except urllib.error.HTTPError:
+        pass
+    body = {"message": commit_msg, "content": content_b64}
+    if sha:
+        body["sha"] = sha
+    req = urllib.request.Request(
+        url, data=json.dumps(body).encode(),
+        headers=headers, method="PUT",
+    )
+    with urllib.request.urlopen(req) as r:
+        result = json.loads(r.read())
+    return result["content"]["html_url"]
+```
+
+**Usage after generating `<slug>/index.html`:**
+
+```python
+REPO  = "JoseNoetic/noetic-proposals"
+TOKEN = "NOETIC_GITHUB_TOKEN"
+
+with open(f"{slug}/index.html") as f:
+    html = f.read()
+github_push(REPO, TOKEN, f"{slug}/index.html", html, f"add: {slug} ({client_name})")
+
+with open("_data/deliverables.json") as f:
+    manifest = f.read()
+github_push(REPO, TOKEN, "_data/deliverables.json", manifest, f"manifest: add {slug}")
+
+pages_url = f"https://josenoetic.github.io/noetic-proposals/{slug}/"
+print(f"✓ Live at: {pages_url}")
+```
+
+GitHub Pages deploys within ~60 seconds. Always share the `pages_url` with the user at the end.
+
 ## Output workflow
 
 When the user asks to generate a deliverable:
 
 1. **Confirm intent.** Use AskUserQuestion if any of: client name, deliverable type (proposal vs slides), slides format (reveal vs snap), key sections to include, or hero copy are unclear.
 
-2. **Pick the slug.** `<client-slug>-<random-4>` like `caesarstone-7k2x` (matches the diagram). The 4-char suffix prevents collisions when iterating.
+2. **Pick the slug.** `<client-slug>-<random-4>` like `caesarstone-7k2x`. The 4-char suffix prevents collisions when iterating.
 
-3. **Create the folder.** `noetic-proposals/<slug>/` with subfolder `assets/` for client-specific files.
+3. **Clone the repo** to access all assets:
+   ```bash
+   git clone https://github.com/JoseNoetic/noetic-proposals.git
+   ```
 
-4. **Pick the template.**
+4. **Convert assets to base64** — logos, team photos, client logos, partner badges — so the HTML is fully standalone.
+
+5. **Pick the template.**
    - Long-scroll capabilities/proposal → `_templates/proposal-base.html`
    - Slides, presenting live → `_templates/slides-reveal.html`
    - Slides, scrolling preview / shareable link → `_templates/slides-snap.html`
 
-5. **Copy + parametrize.** Read the template, replace placeholders (see "Placeholder map" below), trim sections the user doesn't need, write to `<slug>/index.html`.
+6. **Copy + parametrize.** Replace placeholders, embed assets as base64, write to `<slug>/index.html`.
 
-6. **Reference shared assets** with `../_assets/...`, per-deliverable assets with `assets/...`.
+7. **Update `_data/deliverables.json`** — append the new entry.
 
-7. **Update the landing index.** Append the new deliverable to the manifest (`_data/deliverables.json`) so root `index.html` lists it.
+8. **Push both files** using `github_push()` (see above).
 
-8. **Tell the user the URL.** Format: `https://<github-user>.github.io/noetic-proposals/<slug>/`. Also share the local `computer://` link so they can preview before pushing.
+9. **Share the URL:** `https://josenoetic.github.io/noetic-proposals/<slug>/` — live in ~60 seconds.
 
 ### Placeholder map (proposal-base.html)
 
