@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noetic — Proposals &amp; Decks</title>
+<meta name="description" content="Internal index of Noetic client proposals, capabilities decks, and pitch slides.">
+<link rel="icon" href="_assets/noetic/favicon.ico" type="image/x-icon">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #FAFAF7;
+  --ink: #0A0A0E;
+  --ink-soft: #1A1A1F;
+  --ink-mute: #6B6B7B;
+  --ink-faint: #A8A8B5;
+  --card: #FFFFFF;
+  --purple: #6C5CE7;
+  --purple-deep: #4D3FC9;
+  --rule: rgba(10, 10, 14, 0.08);
+  --font-display: 'Fraunces', serif;
+  --font-sans: 'Manrope', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  padding: clamp(48px, 8vh, 96px) 32px;
+}
+::selection { background: var(--purple); color: white; }
+.wrap { max-width: 980px; margin: 0 auto; }
+.brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 64px; }
+.brand img { height: 30px; width: auto; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--ink-mute);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.eyebrow::before { content: ""; width: 6px; height: 6px; background: var(--purple); border-radius: 50%; }
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-top: 16px;
+  max-width: 16ch;
+}
+h1 em { font-style: italic; font-weight: 400; }
+.lede { font-size: clamp(18px, 1.5vw, 22px); max-width: 56ch; margin-top: 24px; }
+
+.section-head { display: flex; align-items: baseline; justify-content: space-between; margin: 80px 0 24px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+.section-head h2 { font-family: var(--font-display); font-weight: 600; font-size: 26px; color: var(--ink); }
+.section-head .count { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.1em; }
+
+.deliverables { display: grid; gap: 12px; }
+.deliverable {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 24px;
+  align-items: center;
+  padding: 20px 24px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.deliverable:hover { border-color: var(--purple); }
+.deliverable:focus-within { border-color: var(--purple); outline: 2px solid var(--purple); outline-offset: 2px; }
+.deliverable .meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); }
+.deliverable .name { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--ink); margin-top: 4px; letter-spacing: -0.015em; }
+.deliverable .name a { color: inherit; text-decoration: none; }
+.deliverable .name a:hover { color: var(--purple-deep); }
+.deliverable .name a:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; border-radius: 4px; }
+.deliverable .type { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); padding: 4px 10px; border: 1px solid var(--purple); border-radius: 999px; }
+.deliverable .date { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); }
+
+footer { margin-top: 120px; padding-top: 40px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 16px; }
+footer .meta-line { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mute); }
+
+a { color: var(--purple); }
+a:hover { color: var(--purple-deep); }
+a:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; border-radius: 2px; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="brand">
+    <img src="_assets/noetic/logo-purple.svg" alt="Noetic">
+    <span>NOETIC · PROPOSALS</span>
+  </div>
+
+  <span class="eyebrow">INTERNAL INDEX</span>
+  <h1>Every deck.<br><em>One source of truth.</em></h1>
+  <p class="lede">Each entry below is a folder in this repo, served via GitHub Pages. Add new ones with the <code>noetic-proposal-generator</code> skill — they show up here automatically once committed.</p>
+
+  <div class="section-head">
+    <h2>Active deliverables</h2>
+    <span class="count" id="count">— LOADING</span>
+  </div>
+
+  <div class="deliverables" id="list">
+    <!-- Auto-populated by the script below from _data/deliverables.json. -->
+    <!-- Fallback static example if JSON not present: -->
+    <noscript>
+      <div class="deliverable">
+        <div>
+          <div class="meta">CAESARSTONE-7K2X</div>
+          <div class="name"><a href="caesarstone-7k2x/">Caesarstone — Capabilities &amp; Proposal</a></div>
+        </div>
+        <span class="type">SLIDES · SNAP</span>
+        <span class="date">APR 2026</span>
+      </div>
+    </noscript>
+  </div>
+
+  <footer>
+    <span class="meta-line">© Noetic Creative · Internal</span>
+    <span class="meta-line">github.com/<your-org>/noetic-proposals</span>
+  </footer>
+</div>
+
+<script>
+  // Loads _data/deliverables.json and renders the list. Falls back gracefully.
+  fetch('_data/deliverables.json', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(data => {
+      const list = document.getElementById('list');
+      const count = document.getElementById('count');
+      list.innerHTML = '';
+      const items = (data.deliverables || []).slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+      count.textContent = `${items.length} ENTR${items.length === 1 ? 'Y' : 'IES'}`;
+      for (const d of items) {
+        const el = document.createElement('div');
+        el.className = 'deliverable';
+        el.innerHTML = `
+          <div>
+            <div class="meta">${(d.slug || '').toUpperCase()}</div>
+            <div class="name"><a href="${d.slug}/">${d.client} — ${d.title}</a></div>
+          </div>
+          <span class="type">${(d.format || 'PROPOSAL').toUpperCase()}</span>
+          <span class="date">${d.date || ''}</span>
+        `;
+        list.appendChild(el);
+      }
+      if (items.length === 0) {
+        list.innerHTML = '<p style="color: var(--ink-mute); font-style: italic;">No deliverables yet. Run the skill to generate one.</p>';
+      }
+    })
+    .catch(() => {
+      document.getElementById('count').textContent = '— FALLBACK MODE';
+    });
+</script>
+
+</body>
+</html>

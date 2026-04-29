@@ -1,0 +1,48 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Node (if any tooling sneaks in)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Build / preview
+.cache/
+dist/
+build/
+.parcel-cache/
+
+# Sandbox / agent leftovers
+.claude/
+.cowork/
+.session-mounts/
+
+# Local-only files
+*.local
+.env
+.env.local
+local.json
+
+# Drafts / scratch
+_draft/
+_scratch/
+*.bak
+*.draft.html

@@ -1,0 +1,159 @@
+{
+  "team": [
+    {
+      "name": "Tamir Alush",
+      "role": "Strategy + Creative Direction",
+      "photo": "team/tamir-alush.webp"
+    },
+    {
+      "name": "Nicole Luna",
+      "role": "Account Director",
+      "photo": "team/nicole-luna.webp"
+    },
+    {
+      "name": "Jackie Frysz",
+      "role": "Head of Operations",
+      "photo": "team/jackie-frysz.webp"
+    },
+    {
+      "name": "Jonathan Levanon",
+      "role": "Growth Mentor",
+      "photo": "team/jonathan-levanon.webp"
+    },
+    {
+      "name": "Paula Carriel",
+      "role": "Senior Account Strategist",
+      "photo": "team/paula-carriel.webp"
+    },
+    {
+      "name": "Vanessa Soria",
+      "role": "Account Manager",
+      "photo": "team/vanessa-soria.webp"
+    },
+    {
+      "name": "Andrea Martinez",
+      "role": "Account Manager",
+      "photo": "team/andrea-martinez.webp"
+    },
+    {
+      "name": "Gonzalo Mazzoni",
+      "role": "Media Buyer",
+      "photo": "team/gonzalo-mazzoni.webp"
+    },
+    {
+      "name": "Luna Murgia",
+      "role": "Media Buyer",
+      "photo": "team/luna-murgia.webp"
+    },
+    {
+      "name": "Tim Newlin",
+      "role": "Paid Search",
+      "photo": "team/tim-newlin.webp"
+    },
+    {
+      "name": "Cory Wray",
+      "role": "Media Buyer",
+      "photo": "team/cory-wray.webp"
+    },
+    {
+      "name": "Will Kennon",
+      "role": "Paid Social",
+      "photo": "team/will-kennon.webp"
+    },
+    {
+      "name": "Samuel Henke",
+      "role": "Media Buyer",
+      "photo": "team/samuel-henke.webp"
+    },
+    {
+      "name": "Gabriel Sheridan",
+      "role": "Media Buyer",
+      "photo": "team/gabriel-sheridan.webp"
+    },
+    {
+      "name": "Carolina Fallu",
+      "role": "Strategic Planner",
+      "photo": "team/carolina-fallu.webp"
+    },
+    {
+      "name": "Maria Arevalo",
+      "role": "Executive Assistant",
+      "photo": "team/maria-arevalo.webp"
+    },
+    {
+      "name": "Alex Heilbronn",
+      "role": "Copywriter",
+      "photo": "team/alex-heilbronn.webp"
+    },
+    {
+      "name": "Virginia Mayer",
+      "role": "Copywriter",
+      "photo": "team/virginia-mayer.webp"
+    },
+    {
+      "name": "Andres Gallo",
+      "role": "Creative Team Lead",
+      "photo": "team/andres-gallo.webp"
+    },
+    {
+      "name": "Daniel Rojas",
+      "role": "Video Editor",
+      "photo": "team/daniel-rojas.webp"
+    },
+    {
+      "name": "Maggie Bernal",
+      "role": "Graphic Designer",
+      "photo": "team/maggie-bernal.webp"
+    },
+    {
+      "name": "Angelica Negron",
+      "role": "Graphic Designer",
+      "photo": "team/angelica-negron.webp"
+    },
+    {
+      "name": "Serge Alarcon",
+      "role": "Email Marketing Specialist",
+      "photo": "team/serge-alarcon.webp"
+    },
+    {
+      "name": "Daniela Benfele",
+      "role": "Automations + Email Marketing",
+      "photo": "team/daniela-benfele.webp"
+    },
+    {
+      "name": "Val Parra",
+      "role": "Social Media Management",
+      "photo": "team/val-parra.webp"
+    },
+    {
+      "name": "Ava Boario",
+      "role": "Community Manager",
+      "photo": "team/ava-boario.webp"
+    },
+    {
+      "name": "Danielle Greenberg",
+      "role": "AI Ops Consultant",
+      "photo": "team/danielle-greenberg.webp"
+    },
+    {
+      "name": "Joe Conroy",
+      "role": "Organic Search",
+      "photo": "team/joe-conroy.webp"
+    },
+    {
+      "name": "Monique Johnson",
+      "role": "Webinar Expert",
+      "photo": "team/monique-johnson.webp"
+    },
+    {
+      "name": "Esteban Grijalva",
+      "role": "Front-End Development",
+      "photo": "team/esteban-grijalva.webp"
+    },
+    {
+      "name": "Natali Alush",
+      "role": "Human Resources",
+      "photo": "team/natali-alush.webp"
+    }
+  ]
+}

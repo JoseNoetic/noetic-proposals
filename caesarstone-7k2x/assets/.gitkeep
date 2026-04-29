@@ -1,0 +1,3 @@
+# This folder holds per-deliverable assets (e.g., client logo) for caesarstone-7k2x.
+# Put files like client-logo.svg, hero-image.jpg here and reference as `assets/...`
+# from index.html. Shared brand assets stay in ../_assets/.

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{CLIENT_NAME}} — {{DELIVERABLE_TITLE}} · Noetic</title>
+<meta name="description" content="{{CLIENT_NAME}} · {{DELIVERABLE_TITLE}} — prepared by Noetic Creative.">
+<link rel="icon" href="../_assets/noetic/favicon.ico" type="image/x-icon">
+
+<!--
+  ============================================================
+  noetic-proposals — slides-snap.html
+  ============================================================
+  Custom 16:9 slides using CSS scroll-snap. Zero dependencies.
+  Use this format when you want a SHAREABLE LINK that scrolls
+  through slides — no presenter mode needed, just a self-contained
+  page.
+
+  Each <section class="slide"> is one slide. Add/remove freely.
+
+  REPLACE TOKENS:
+    {{CLIENT_NAME}}, {{CLIENT_INDUSTRY}}, {{DELIVERABLE_TITLE}},
+    {{HERO_HEADLINE}}, {{HERO_LEDE}}, {{DATE}}, {{PROPOSAL_VERSION}}
+
+  Keyboard nav: ↓/Space = next, ↑ = previous, Home/End = first/last.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #FAFAF7;
+  --paper-warm: #F2F0EA;
+  --paper-cool: #F0F0F4;
+  --ink: #0A0A0E;
+  --ink-soft: #1A1A1F;
+  --ink-mute: #6B6B7B;
+  --ink-faint: #A8A8B5;
+  --card: #FFFFFF;
+  --purple: #6C5CE7;
+  --purple-deep: #4D3FC9;
+  --purple-soft: #EFEDFE;
+  --rule: rgba(10, 10, 14, 0.08);
+  --rule-strong: rgba(10, 10, 14, 0.16);
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans: 'Manrope', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+
+::selection { background: var(--purple); color: white; }
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   SLIDE — 16:9, fills viewport, snaps
+============================================================ */
+.slide {
+  height: 100vh;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: grid;
+  align-content: center;
+  padding: 6vh 8vw;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+}
+.slide.dark { background: var(--ink); color: rgba(255,255,255,0.85); }
+.slide.cool { background: var(--paper-cool); }
+.slide.warm { background: var(--paper-warm); }
+
+/* slide number marker */
+.slide::after {
+  content: attr(data-slide);
+  position: absolute;
+  bottom: 24px; right: 32px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--ink-faint);
+}
+.slide.dark::after { color: rgba(255,255,255,0.4); }
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.slide.dark h1, .slide.dark h2, .slide.dark h3, .slide.dark h4 { color: white; }
+
+.display-xl { font-size: clamp(48px, 8vw, 120px); line-height: 0.95; letter-spacing: -0.035em; }
+.display-lg { font-size: clamp(36px, 5.5vw, 80px); line-height: 1; letter-spacing: -0.03em; }
+.display-md { font-size: clamp(28px, 4vw, 56px); line-height: 1.05; }
+.display-sm { font-size: clamp(22px, 2.6vw, 36px); line-height: 1.1; }
+
+em { font-style: italic; font-weight: 400; }
+.slide.dark em { color: var(--purple); }
+
+.lede { font-size: clamp(18px, 1.5vw, 22px); max-width: 60ch; line-height: 1.5; }
+.lede-lg { font-size: clamp(22px, 2vw, 28px); max-width: 32ch; line-height: 1.4; color: var(--ink); }
+.slide.dark .lede, .slide.dark .lede-lg { color: rgba(255,255,255,0.8); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-mute);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.eyebrow::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--purple);
+  border-radius: 50%;
+}
+.slide.dark .eyebrow { color: rgba(255,255,255,0.6); }
+
+.meta-line {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.slide.dark .meta-line { color: rgba(255,255,255,0.5); }
+
+/* ============================================================
+   COMPONENTS
+============================================================ */
+.brand-mark {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-weight: 700; font-size: 18px; color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 8vh;
+}
+.brand-mark img { height: 32px; width: auto; }
+.slide.dark .brand-mark { color: white; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: start; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.five-col { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding-top: 32px; border-top: 1px solid var(--rule); }
+.slide.dark .stat-grid { border-top-color: rgba(255,255,255,0.12); }
+.stat-num {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(36px, 4vw, 56px); line-height: 1;
+  letter-spacing: -0.03em; color: var(--ink);
+}
+.slide.dark .stat-num { color: white; }
+.stat-num small { font-size: 0.5em; }
+.stat-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); margin-top: 12px; max-width: 22ch; }
+.slide.dark .stat-label { color: rgba(255,255,255,0.5); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 28px;
+}
+.slide.dark .card { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: white; }
+.card h4 { font-size: 22px; margin-top: 8px; }
+.card p { font-size: 15px; margin-top: 12px; color: var(--ink-soft); }
+.slide.dark .card p { color: rgba(255,255,255,0.7); }
+
+.team-card { text-align: center; }
+.team-card img { width: 100%; border-radius: 12px; aspect-ratio: 1 / 1; object-fit: cover; background: var(--paper-cool); }
+.team-card h5 { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-top: 14px; color: var(--ink); }
+.slide.dark .team-card h5 { color: white; }
+.team-card .role { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-top: 4px; }
+.slide.dark .team-card .role { color: rgba(255,255,255,0.5); }
+
+.client-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px; align-items: center; }
+.client-grid img { height: 40px; width: auto; opacity: 0.6; filter: grayscale(1); }
+.slide.dark .client-grid img { filter: grayscale(1) brightness(2); opacity: 0.7; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 24px;
+  font-weight: 600; font-size: 14px;
+  background: var(--purple); color: white;
+  border-radius: 999px;
+  transition: background 200ms ease;
+}
+.btn:hover { background: var(--purple-deep); }
+.btn:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+.slide.dark .btn:focus-visible { outline-color: white; }
+.btn-ghost {
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--rule-strong);
+}
+.slide.dark .btn-ghost { color: white; border-color: rgba(255,255,255,0.3); }
+
+ol.process-list { list-style: none; counter-reset: step; max-width: 720px; }
+ol.process-list li { padding: 18px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 80px 1fr; gap: 16px; align-items: baseline; }
+ol.process-list li:last-child { border-bottom: none; }
+ol.process-list .step-num { font-family: var(--font-display); font-size: 32px; font-weight: 600; color: var(--purple); }
+ol.process-list .step-title { font-weight: 700; font-size: 18px; color: var(--ink); }
+ol.process-list .step-aside { color: var(--ink-mute); margin-left: 8px; font-weight: 400; }
+
+/* ============================================================
+   PROGRESS INDICATOR (fixed)
+============================================================ */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--purple);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 1000;
+  transition: transform 100ms linear;
+}
+
+/* ============================================================
+   ACCESSIBILITY
+============================================================ */
+:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ============================================================
+   PRINT — one slide per page (PDF export)
+============================================================ */
+@media print {
+  html { scroll-snap-type: none; }
+  .slide { height: auto; min-height: 100vh; page-break-after: always; }
+  .progress-bar { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- ============================================================
+     SLIDE 1 — COVER
+============================================================ -->
+<section class="slide" data-slide="01 / 10">
+  <div class="brand-mark">
+    <img src="../_assets/noetic/logo-purple.svg" alt="Noetic">
+    <span>NOETIC CREATIVE</span>
+  </div>
+  <p class="meta-line">{{DATE}} · {{PROPOSAL_VERSION}}</p>
+  <h1 class="display-xl" style="margin-top: 16px;">{{CLIENT_NAME}}<br><em>{{DELIVERABLE_TITLE}}</em></h1>
+  <p class="lede-lg" style="margin-top: 32px;">{{HERO_LEDE}}</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 2 — PHILOSOPHY (DARK)
+============================================================ -->
+<section class="slide dark" data-slide="02 / 10">
+  <span class="eyebrow">PHILOSOPHY</span>
+  <h2 class="display-lg">Data that tells a story.<br><em>Creative that makes you want to listen.</em></h2>
+  <p class="lede" style="margin-top: 32px;">A solution grounded in knowledge, not instinct. Specialists, not full-stack marketers. Evidence, not vibes. Disciplined creativity, not noise.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 3 — OPPORTUNITY
+============================================================ -->
+<section class="slide" data-slide="03 / 10">
+  <span class="eyebrow">THE OPPORTUNITY</span>
+  <h2 class="display-md">Why <em>{{CLIENT_NAME}}</em>, why now.</h2>
+  <div class="two-col" style="margin-top: 48px;">
+    <div>
+      <h4 class="display-sm">Market context</h4>
+      <p class="lede" style="margin-top: 16px;">One paragraph on the market shift {{CLIENT_NAME}} is positioned to capture. Specific. Numerical.</p>
+    </div>
+    <div>
+      <h4 class="display-sm">What's at stake</h4>
+      <p class="lede" style="margin-top: 16px;">What happens if the next 12 months are wasted. Concrete cost of inaction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 4 — APPROACH STATS (COOL)
+============================================================ -->
+<section class="slide cool" data-slide="04 / 10">
+  <span class="eyebrow">OUR APPROACH</span>
+  <h2 class="display-md">Built to <em>compound</em>.</h2>
+  <div class="stat-grid" style="margin-top: 64px;">
+    <div>
+      <div class="stat-num">31</div>
+      <div class="stat-label">Specialists across paid, creative, lifecycle, search, data</div>
+    </div>
+    <div>
+      <div class="stat-num">104%</div>
+      <div class="stat-label">Agency revenue growth in 2025</div>
+    </div>
+    <div>
+      <div class="stat-num">200+</div>
+      <div class="stat-label">AI-assisted videos produced for clients</div>
+    </div>
+    <div>
+      <div class="stat-num">15<small>yrs</small></div>
+      <div class="stat-label">Building scalable marketing systems since 2010</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 5 — SCOPE / SERVICES
+============================================================ -->
+<section class="slide" data-slide="05 / 10">
+  <span class="eyebrow">SCOPE</span>
+  <h2 class="display-md">What we'll do for {{CLIENT_NAME}}.</h2>
+  <div class="three-col" style="margin-top: 48px;">
+    <div class="card">
+      <p class="meta-line">/01</p>
+      <h4>Paid Acquisition</h4>
+      <p>Meta, TikTok, LinkedIn, Google. Full-funnel, ASC-ready, creative-led.</p>
+    </div>
+    <div class="card">
+      <p class="meta-line">/02</p>
+      <h4>Lifecycle &amp; Email</h4>
+      <p>Klaviyo or HubSpot, behavioral triggers, retention math.</p>
+    </div>
+    <div class="card">
+      <p class="meta-line">/03</p>
+      <h4>Creative Production</h4>
+      <p>UGC, motion, AI-assisted scale. 200+ assets/quarter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 6 — PROCESS
+============================================================ -->
+<section class="slide" data-slide="06 / 10">
+  <span class="eyebrow">PROCESS</span>
+  <h2 class="display-md">A five-phase <em>methodology</em>.</h2>
+  <ol class="process-list" style="margin-top: 40px;">
+    <li><span class="step-num">01.</span><span><span class="step-title">Brief &amp; Competitive Landscape</span><span class="step-aside">— Day 1–14</span></span></li>
+    <li><span class="step-num">02.</span><span class="step-title">ICP &amp; Buyer Journey</span></li>
+    <li><span class="step-num">03.</span><span class="step-title">Media &amp; Channel Strategy</span></li>
+    <li><span class="step-num">04.</span><span class="step-title">Goals, KPIs &amp; Creative Rollout</span></li>
+    <li><span class="step-num">05.</span><span class="step-title">Launch &amp; Continuous Optimization</span></li>
+  </ol>
+</section>
+
+<!-- ============================================================
+     SLIDE 7 — TEAM (DARK)
+     Replace cards with real members from _assets/team/manifest.json
+============================================================ -->
+<section class="slide dark" data-slide="07 / 10">
+  <span class="eyebrow">TEAM</span>
+  <h2 class="display-md">The <em>specialists</em> on this engagement.</h2>
+  <div class="five-col" style="margin-top: 48px;">
+    <!-- TEAM_GRID_START -->
+    <div class="team-card">
+      <img src="../_assets/team/tamir-alush.webp" alt="Tamir Alush">
+      <h5>Tamir Alush</h5>
+      <div class="role">Strategy + Creative</div>
+    </div>
+    <div class="team-card">
+      <img src="../_assets/team/nicole-luna.webp" alt="Nicole Luna">
+      <h5>Nicole Luna</h5>
+      <div class="role">Account Director</div>
+    </div>
+    <div class="team-card">
+      <img src="../_assets/team/jackie-frysz.webp" alt="Jackie Frysz">
+      <h5>Jackie Frysz</h5>
+      <div class="role">Head of Operations</div>
+    </div>
+    <div class="team-card">
+      <img src="../_assets/team/paula-carriel.webp" alt="Paula Carriel">
+      <h5>Paula Carriel</h5>
+      <div class="role">Senior Strategist</div>
+    </div>
+    <div class="team-card">
+      <img src="../_assets/team/gonzalo-mazzoni.webp" alt="Gonzalo Mazzoni">
+      <h5>Gonzalo Mazzoni</h5>
+      <div class="role">Media Buyer</div>
+    </div>
+    <!-- TEAM_GRID_END -->
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 8 — PROOF (WARM)
+============================================================ -->
+<section class="slide warm" data-slide="08 / 10">
+  <span class="eyebrow">PROOF</span>
+  <h2 class="display-md">Brands we've <em>built systems for</em>.</h2>
+  <div class="client-grid" style="margin-top: 48px;">
+    <img src="../_assets/clients-portfolio/lumenis.svg" alt="Lumenis">
+    <img src="../_assets/clients-portfolio/nice.svg" alt="NICE">
+    <img src="../_assets/clients-portfolio/sapiens.svg" alt="Sapiens">
+    <img src="../_assets/clients-portfolio/audiocodes.svg" alt="AudioCodes">
+    <img src="../_assets/clients-portfolio/babyark.svg" alt="BabyArk">
+    <img src="../_assets/clients-portfolio/wsc-sports.svg" alt="WSC Sports">
+    <img src="../_assets/clients-portfolio/priority.svg" alt="Priority">
+    <img src="../_assets/clients-portfolio/tabit.svg" alt="Tabit">
+    <img src="../_assets/clients-portfolio/datumate.svg" alt="Datumate">
+    <img src="../_assets/clients-portfolio/hazera.svg" alt="Hazera">
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 9 — INVESTMENT
+============================================================ -->
+<section class="slide" data-slide="09 / 10">
+  <span class="eyebrow">INVESTMENT</span>
+  <h2 class="display-md">The shape of the engagement.</h2>
+  <div class="two-col" style="margin-top: 40px;">
+    <div class="card">
+      <p class="meta-line">RECOMMENDED</p>
+      <h3 class="display-sm" style="margin-top: 8px;">Full-stack growth program</h3>
+      <p>3 channels, lifecycle, creative production. Senior team direct access.</p>
+      <p style="margin-top: 24px; font-family: var(--font-display); font-size: 40px; color: var(--ink); font-weight: 600;">$XX,XXX<span style="font-size: 18px; color: var(--ink-mute);"> /mo</span></p>
+      <p class="meta-line" style="margin-top: 8px;">12-MONTH MIN · 90-DAY OUT</p>
+    </div>
+    <div class="card">
+      <p class="meta-line">FOUNDATION</p>
+      <h3 class="display-sm" style="margin-top: 8px;">Single-channel pilot</h3>
+      <p>One channel, no lifecycle, capped creative. Validate before scaling.</p>
+      <p style="margin-top: 24px; font-family: var(--font-display); font-size: 40px; color: var(--ink); font-weight: 600;">$X,XXX<span style="font-size: 18px; color: var(--ink-mute);"> /mo</span></p>
+      <p class="meta-line" style="margin-top: 8px;">3-MONTH MIN</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 10 — CTA (DARK)
+============================================================ -->
+<section class="slide dark" data-slide="10 / 10">
+  <span class="eyebrow">NEXT STEP</span>
+  <h1 class="display-xl">Got a problem<br><em>worth solving?</em></h1>
+  <div style="margin-top: 48px; display: flex; gap: 16px;">
+    <a class="btn" href="mailto:hello@noetic.io">Schedule a kickoff →</a>
+    <a class="btn btn-ghost" href="https://noetic.io">noetic.io</a>
+  </div>
+  <p class="meta-line" style="margin-top: 8vh;">© Noetic Creative · {{DATE}} · {{PROPOSAL_VERSION}}</p>
+</section>
+
+<script>
+  // Progress bar based on scroll
+  const progress = document.getElementById('progress');
+  const updateProgress = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? window.scrollY / max : 0;
+    progress.style.transform = `scaleX(${pct})`;
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Keyboard navigation
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const goTo = (idx) => {
+    const clamped = Math.max(0, Math.min(slides.length - 1, idx));
+    slides[clamped].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  const currentIndex = () => {
+    const y = window.scrollY + window.innerHeight / 2;
+    return slides.findIndex((el, i) => {
+      const next = slides[i + 1];
+      return el.offsetTop <= y && (!next || next.offsetTop > y);
+    });
+  };
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); goTo(currentIndex() + 1); }
+    else if (['ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); goTo(currentIndex() - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
+  });
+</script>
+</body>
+</html>

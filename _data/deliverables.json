@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "_comment": "Source of truth for the landing page. Append new deliverables here when you generate them with the skill. Sort doesn't matter — the page sorts by date desc.",
+  "deliverables": [
+    {
+      "slug": "caesarstone-7k2x",
+      "client": "Caesarstone",
+      "title": "Capabilities & Proposal",
+      "industry": "Premium Surfaces",
+      "format": "slides · snap",
+      "date": "2026-04",
+      "owner": "tamir-alush",
+      "status": "draft"
+    }
+  ]
+}
